@@ -26,7 +26,7 @@
   var that = this;
   var situationIndex = 0;
   var emotionIndex = 0;
-  this.choose = true;
+  this.choose = false;
   this.first = true;
 
 // Emotions Set Up
@@ -40,14 +40,15 @@
     ];
 // Situations Set Up
     this.situationsList = [
-      "When you fail to hand in homework...",
-      "When you fail in English Class...",
-      "When you fail in Math Class..."
+      "When I fail to hand in homework, I feel...",
+      "When I fail in English Class, I feel...",
+      "When I fail in Math Class, I feel..."
     ];
 
     this.start = function(e) {
       console.log(performance.now());
       this.first = false;
+      setTimeout(myFunction, 3000);
     }
 
     that.refreshPage = function(e) {
