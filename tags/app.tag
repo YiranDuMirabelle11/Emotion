@@ -1,7 +1,8 @@
 <app>
 
   <div class="welcomePage" if={ first }>
-
+     <h2>Lets' Start!</h2>
+     <button onclick={ start }> Go! </button>
   </div>
   <div class="" if={ !first }>
     <h1 if={ !choose } class = "title"> {situation} </h1>
@@ -9,10 +10,10 @@
       <h1> {situation} </h1>
       <div class="row buttonGroup">
         <div class="col buttondiv">
-          <button type="button" name= { emotionOne } onclick={ chooseEmotion }> {emotionOne} </button>
+          <button type="button" class="emotionButton" name= { emotionOne } onclick={ chooseEmotion }> {emotionOne} </button>
         </div>
         <div class="col buttondiv primary">
-          <button type="button" name={ emotionTwo } onclick={ chooseEmotion }> {emotionTwo} </button>
+          <button type="button" class="emotionButton" name={ emotionTwo } onclick={ chooseEmotion }> {emotionTwo} </button>
         </div>
     </div>
   </div>
@@ -26,6 +27,7 @@
   var situationIndex = 0;
   var emotionIndex = 0;
   this.choose = true;
+  this.first = true;
 
 // Emotions Set Up
     this.emotionsList = [
@@ -42,6 +44,11 @@
       "When you fail in English Class...",
       "When you fail in Math Class..."
     ];
+
+    this.start = function(e) {
+      console.log(performance.now());
+      this.first = false;
+    }
 
     that.refreshPage = function(e) {
       this.situation = this.situationsList[situationIndex];
@@ -62,7 +69,7 @@
         that.choose = false;
         setTimeout(myFunction, 3000);
         that.refreshPage();
-        console.log(event.currentTarget.innerText);
+        console.log(event.currentTarget.innerText, performance.now());
     }
 
       function myFunction() {
@@ -95,7 +102,7 @@
       text-align: center;
     }
 
-    button {
+    .emotionButton {
       font-size: 40px;
       height: 300px;
       width: 300px;
